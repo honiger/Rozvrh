@@ -32,9 +32,9 @@ public class RozvrhTable extends AbstractTableModel {
             case 0 -> a.predmet;
             case 1 -> a.nazev;
             case 2 -> a.den;
-            case 3 -> a.hodinaSkutOd;
-            case 4 -> a.hodinaSkutDo;
-            case 5 -> a.ucitel;
+            case 3 -> a.hodinaSkutOd != null ? a.hodinaSkutOd.value : "";
+            case 4 -> a.hodinaSkutDo != null ? a.hodinaSkutDo.value : "";
+            case 5 -> a.ucitel != null ? (a.ucitel.titulPred + " " + a.ucitel.jmeno + " " + a.ucitel.prijmeni) : "";
             default -> "";
         };
     }
