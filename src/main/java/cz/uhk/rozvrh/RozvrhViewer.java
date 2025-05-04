@@ -10,6 +10,7 @@ public class RozvrhViewer extends JFrame {
     private JComboBox<String> comboBudova, comboMistnost;
 
     public RozvrhViewer() {
+
         // Okno
         setTitle("Rozvrh místnosti");
         setSize(800, 600);
@@ -19,26 +20,21 @@ public class RozvrhViewer extends JFrame {
         // Panel
         JPanel topPanel = new JPanel();
         comboBudova = new JComboBox<>(new String[]{"J", "A"});
-
-        // Inicializace místností pro každou budovu
         comboMistnost = new JComboBox<>();
-        updateMistnosti("J"); // výchozí budova J
-
-        // Při změně budovy aktualizuj místnosti
-        comboBudova.addActionListener(e -> {
-            String vybranaBudova = (String) comboBudova.getSelectedItem();
-            updateMistnosti(vybranaBudova);
-        });
-
         JButton btnLoad = new JButton("Načíst rozvrh");
-
         topPanel.add(new JLabel("Budova:"));
         topPanel.add(comboBudova);
         topPanel.add(new JLabel("Místnost:"));
         topPanel.add(comboMistnost);
         topPanel.add(btnLoad);
-
         add(topPanel, BorderLayout.NORTH);
+
+        // Aktualizace místnosti podle budovy
+        updateMistnosti("J");
+        comboBudova.addActionListener(e -> {
+            String vybranaBudova = (String) comboBudova.getSelectedItem();
+            updateMistnosti(vybranaBudova);
+        });
 
         // Tabulka
         table = new JTable();
@@ -63,9 +59,9 @@ public class RozvrhViewer extends JFrame {
 
         String[] mistnosti;
         if ("A".equals(budova)) {
-            mistnosti = new String[]{"A1", "A2", "A3", "A4", "A5"};
+            mistnosti = new String[]{"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"};
         } else if ("J".equals(budova)) {
-            mistnosti = new String[]{"J1", "J2", "J3", "J4", "J5"};
+            mistnosti = new String[]{"J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10"};
         } else {
             mistnosti = new String[]{};
         }
